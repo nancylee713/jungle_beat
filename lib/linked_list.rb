@@ -61,6 +61,17 @@ class LinkedList
     node
   end
 
+  def find(start, count)
+    start_node = node_at(head, start)
+    result = initial_sound(start_node)
+
+    if count == 1
+      result
+    else
+      stringify(start_node.next_node, result, count -= 1)
+    end
+  end
+
   private
 
   def count_node(node, base)
@@ -71,19 +82,19 @@ class LinkedList
     end
   end
 
-  def initial_sound
-    self.head.sound
+  def initial_sound(node=self.head)
+    node.sound
   end
 
   def concat(initial_sound, node)
     "#{initial_sound} #{node.sound}"
   end
 
-  def stringify(node, initial_sound)
-    if node.is_tail?
+  def stringify(node, initial_sound, final_sound=nil, counter=1)
+    if node.is_tail? || final_sound == counter
       concat(initial_sound, node)
     else
-      stringify(node.next_node, concat(initial_sound, node))
+      stringify(node.next_node, concat(initial_sound, node), final_sound, counter += 1)
     end
   end
 

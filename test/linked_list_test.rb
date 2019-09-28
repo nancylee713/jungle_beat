@@ -102,4 +102,18 @@ class LinkedListTest < Minitest::Test
     assert_instance_of Node, result
     assert_equal expected, @obj.to_string
   end
+
+  def test_find
+    @obj.append('deep')
+    @obj.append('woo')
+    @obj.append('shi')
+    @obj.append('shu')
+    @obj.append('blop')
+
+    result = @obj.find(2, 1)
+    assert_equal 'shi', result
+
+    result_2 = @obj.find(1, 3)
+    assert_equal 'woo shi shu', result_2
+  end
 end
