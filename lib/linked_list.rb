@@ -14,4 +14,8 @@ class LinkedList
   def count
     @head.nil? ? 0 : 1
   end
+
+  def to_string
+    self.head.sound
+  end
 end

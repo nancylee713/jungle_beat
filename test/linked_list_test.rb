@@ -35,4 +35,13 @@ class LinkedListTest < Minitest::Test
 
     assert_equal 1, obj.count
   end
+
+  def test_to_string
+    obj = LinkedList.new
+    obj.append('doop')
+
+    stringified = obj.to_string
+
+    assert_equal 'doop', stringified
+  end
 end
