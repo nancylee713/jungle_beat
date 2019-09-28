@@ -39,4 +39,20 @@ class JungleBeatTest < Minitest::Test
 
     assert_equal "", @jb.play
   end
+
+  def test_append_with_constraint
+    jb = JungleBeat.new
+    jb.append('deep')
+    jb.append("Mississippi")
+
+    assert_equal 'deep', jb.all
+  end
+
+  def test_prepend_only_valid_beats
+    jb = JungleBeat.new
+    jb.append('deep')
+
+    assert_equal 3, jb.prepend("tee tee tee Mississippi")
+    assert_equal "tee tee tee deep", jb.all
+  end
 end
