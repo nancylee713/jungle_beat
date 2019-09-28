@@ -24,4 +24,15 @@ class LinkedListTest < Minitest::Test
     assert_equal 'doop', longer_obj.sound
   end
 
+  def test_count_starts_out_zero
+    obj = LinkedList.new
+    assert_equal 0, obj.count
+  end
+
+  def test_count_increments_by_1_upon_adding_a_new_node
+    obj = LinkedList.new
+    obj.append('doop')
+
+    assert_equal 1, obj.count
+  end
 end
