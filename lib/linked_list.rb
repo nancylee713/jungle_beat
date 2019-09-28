@@ -26,4 +26,8 @@ class LinkedList
       last_node(node.next_node)
     end
   end
+
+  def is_empty?
+    self.head.nil?
+  end
 end

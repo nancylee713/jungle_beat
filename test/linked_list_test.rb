@@ -64,4 +64,12 @@ class LinkedListTest < Minitest::Test
 
     result = obj.head.next_node.sound
   end
+
+  def test_empty_when_head_is_nil_or_not
+    obj = LinkedList.new
+    assert obj.is_empty?
+
+    obj.append('deep')
+    refute obj.is_empty?
+  end
 end
