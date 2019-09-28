@@ -18,4 +18,12 @@ class NodeTest < Minitest::Test
 
     assert obj.is_tail?
   end
+
+  def test_variable_state_for_next_node
+    obj = Node.new("plop")
+    new_sound = "deep"
+    obj.next_node = new_sound
+
+    assert_equal new_sound, obj.next_node
+  end
 end
