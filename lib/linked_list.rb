@@ -24,7 +24,13 @@ class LinkedList
   end
 
   def to_string
-    self.head.sound
+    if is_empty?
+      ""
+    elsif self.head.is_tail?
+      initial_sound
+    else
+      stringify(self.head.next_node, initial_sound)
+    end
   end
 
   def last_node(node)
@@ -46,6 +52,22 @@ class LinkedList
       base
     else
       count_node(node.next_node, base += 1)
+    end
+  end
+
+  def initial_sound
+    self.head.sound
+  end
+
+  def concat(initial_sound, node)
+    "#{initial_sound} #{node.sound}"
+  end
+
+  def stringify(node, initial_sound)
+    if node.is_tail?
+      concat(initial_sound, node)
+    else
+      stringify(node.next_node, concat(initial_sound, node))
     end
   end
 end
