@@ -89,4 +89,12 @@ class LinkedListTest < Minitest::Test
 
     assert_equal 2, obj.count
   end
+
+  def test_to_string_concatenates_multiple_strings_together
+    obj = LinkedList.new
+    obj.append('doop')
+    obj.append('deep')
+
+    assert_equal 'doop deep', obj.to_string
+  end
 end
