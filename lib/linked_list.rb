@@ -20,7 +20,7 @@ class LinkedList
   end
 
   def count
-    @head.nil? ? 0 : 1
+    is_empty? ? 0 : count_node(self.head, 1)
   end
 
   def to_string
@@ -37,5 +37,15 @@ class LinkedList
 
   def is_empty?
     self.head.nil?
+  end
+
+  private
+
+  def count_node(node, base)
+    if node.is_tail?
+      base
+    else
+      count_node(node.next_node, base += 1)
+    end
   end
 end

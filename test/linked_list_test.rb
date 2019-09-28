@@ -81,4 +81,12 @@ class LinkedListTest < Minitest::Test
     assert_instance_of Node, longer_obj
     assert_equal 'deep', longer_obj.sound
   end
+
+  def test_count_nodes_properly
+    obj = LinkedList.new
+    obj.append('doop')
+    obj.append('deep')
+
+    assert_equal 2, obj.count
+  end
 end
