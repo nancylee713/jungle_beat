@@ -45,11 +45,23 @@ class LinkedListTest < Minitest::Test
     assert_equal 'doop', stringified
   end
 
+  def test_last_node_of_a_linkedlist_is_a_tail
+    obj = LinkedList.new
+    obj.append('doop')
+
+    # insert head as a parameter to check if it's the last node
+    result = obj.last_node(obj.head)
+
+    assert_instance_of Node, result
+    assert_equal 'doop', result.sound
+  end
+
   def test_append_can_add_multiple_nodes
+  skip
     obj = LinkedList.new
     obj.append('doop')
     obj.append('deep')
-    binding.pry
+
     result = obj.head.next_node.sound
   end
 end
