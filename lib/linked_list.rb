@@ -45,6 +45,12 @@ class LinkedList
     self.head.nil?
   end
 
+  def prepend(sound)
+    node = add_node(sound)
+    node.next_node = head
+    self.head = node
+  end
+
   private
 
   def count_node(node, base)

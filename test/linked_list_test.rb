@@ -4,97 +4,89 @@ require './lib/linked_list'
 require 'pry'
 
 class LinkedListTest < Minitest::Test
+  def setup
+    @obj = LinkedList.new
+  end
+
   def test_new_returns_a_linked_list
-    obj = LinkedList.new
-    assert_instance_of LinkedList, obj
+    assert_instance_of LinkedList, @obj
   end
 
   def test_head_starts_out_nil
-    obj = LinkedList.new
-    assert_nil obj.head
+    assert_nil @obj.head
   end
 
   def test_append_adds_new_data_to_the_list
-    obj = LinkedList.new
-    longer_obj = obj.append('doop')
+    longer_obj = @obj.append('doop')
 
     assert_instance_of Node, longer_obj
-    assert_equal longer_obj, obj.head
-    assert_nil obj.head.next_node
+    assert_equal longer_obj, @obj.head
+    assert_nil @obj.head.next_node
     assert_equal 'doop', longer_obj.sound
   end
 
   def test_count_starts_out_zero
-    obj = LinkedList.new
-    assert_equal 0, obj.count
+    assert_equal 0, @obj.count
   end
 
   def test_count_increments_by_1_upon_adding_a_new_node
-    obj = LinkedList.new
-    obj.append('doop')
+    @obj.append('doop')
 
-    assert_equal 1, obj.count
-  end
-
-  def test_to_string
-    obj = LinkedList.new
-    obj.append('doop')
-
-    stringified = obj.to_string
-
-    assert_equal 'doop', stringified
+    assert_equal 1, @obj.count
   end
 
   def test_last_node_of_a_linkedlist_is_a_tail
-    obj = LinkedList.new
-    obj.append('doop')
-
-    # insert head as a parameter to check if it's the last node
-    result = obj.last_node(obj.head)
+    @obj.append('doop')
+    result = @obj.last_node(@obj.head)
 
     assert_instance_of Node, result
     assert_equal 'doop', result.sound
   end
 
   def test_append_can_add_multiple_nodes
-    obj = LinkedList.new
-    obj.append('doop')
-    obj.append('deep')
+    @obj.append('doop')
+    @obj.append('deep')
 
-    result = obj.head.next_node.sound
+    result = @obj.head.next_node.sound
 
     assert_equal 'deep', result
   end
 
   def test_empty_when_head_is_nil_or_not
-    obj = LinkedList.new
-    assert obj.is_empty?
+    assert @obj.is_empty?
 
-    obj.append('deep')
-    refute obj.is_empty?
+    @obj.append('deep')
+    refute @obj.is_empty?
   end
 
   def test_add_node
-    obj = LinkedList.new
-    longer_obj = obj.add_node('deep')
+    longer_obj = @obj.add_node('deep')
 
     assert_instance_of Node, longer_obj
     assert_equal 'deep', longer_obj.sound
   end
 
   def test_count_nodes_properly
-    obj = LinkedList.new
-    obj.append('doop')
-    obj.append('deep')
+    @obj.append('doop')
+    @obj.append('deep')
 
-    assert_equal 2, obj.count
+    assert_equal 2, @obj.count
   end
 
   def test_to_string_concatenates_multiple_strings_together
-    obj = LinkedList.new
-    obj.append('doop')
-    obj.append('deep')
+    @obj.append('doop')
+    @obj.append('deep')
 
-    assert_equal 'doop deep', obj.to_string
+    assert_equal 'doop deep', @obj.to_string
+  end
+
+  def test_prepend
+    @obj.append('doop')
+    @obj.append('deep')
+    @obj.prepend('ding')
+
+    expected = 'ding doop deep'
+
+    assert_equal expected, @obj.to_string
   end
 end
