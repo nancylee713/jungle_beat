@@ -51,6 +51,16 @@ class LinkedList
     self.head = node
   end
 
+  def insert(position, sound)
+    node = add_node(sound)
+    flank_pre = node_at(self.head, position - 1)
+    flank_post = node_at(self.head, position)
+    flank_pre.next_node = node
+    node.next_node = flank_post
+
+    node
+  end
+
   private
 
   def count_node(node, base)
@@ -74,6 +84,14 @@ class LinkedList
       concat(initial_sound, node)
     else
       stringify(node.next_node, concat(initial_sound, node))
+    end
+  end
+
+  def node_at(start_node, position, counter=0)
+    if position == counter
+      start_node
+    else
+      node_at(start_node.next_node, position, counter += 1)
     end
   end
 end

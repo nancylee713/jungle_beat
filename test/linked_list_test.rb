@@ -76,7 +76,7 @@ class LinkedListTest < Minitest::Test
   def test_to_string_concatenates_multiple_strings_together
     @obj.append('doop')
     @obj.append('deep')
-    
+
     assert_equal 'doop deep', @obj.to_string
   end
 
@@ -89,5 +89,17 @@ class LinkedListTest < Minitest::Test
 
     assert_equal expected, @obj.to_string
     assert_equal 3, @obj.count
+  end
+
+  def test_insert
+    @obj.append('doop')
+    @obj.append('deep')
+    @obj.append('ding')
+
+    result = @obj.insert(1, 'woo')
+    expected = 'doop woo deep ding'
+
+    assert_instance_of Node, result
+    assert_equal expected, @obj.to_string
   end
 end
