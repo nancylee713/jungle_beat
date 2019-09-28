@@ -5,4 +5,8 @@ class Node
     @sound = sound
     @next_node = nil
   end
+
+  def is_tail?
+    next_node.nil?
+  end
 end

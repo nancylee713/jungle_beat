@@ -12,4 +12,10 @@ class NodeTest < Minitest::Test
     obj = Node.new("plop")
     assert_nil obj.next_node
   end
+
+  def test_tail_is_true_when_next_node_is_nil
+    obj = Node.new("plop")
+
+    assert obj.is_tail?
+  end
 end
