@@ -127,4 +127,16 @@ class LinkedListTest < Minitest::Test
     assert @obj.includes?("deep")
     refute @obj.includes?("dep")
   end
+
+  def test_pop
+    @obj.append('deep')
+    @obj.append('woo')
+    @obj.append('shi')
+    @obj.append('shu')
+    @obj.append('blop')
+
+    assert_equal 'blop', @obj.pop
+    assert_equal 'shu', @obj.pop
+    assert_equal 'deep woo shi', @obj.to_string
+  end
 end

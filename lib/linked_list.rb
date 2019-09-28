@@ -76,6 +76,13 @@ class LinkedList
     find_by_sound(self.head, sound)
   end
 
+  def pop
+    new_tail = node_at(head, count - 2)
+    popped = new_tail.next_node
+    new_tail.clear!
+    popped.sound
+  end
+
   private
 
   def count_node(node, base)
