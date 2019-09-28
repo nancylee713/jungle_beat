@@ -10,4 +10,8 @@ class Node
   def is_tail?
     next_node.nil?
   end
+
+  def clear!
+    self.next_node = nil
+  end
 end

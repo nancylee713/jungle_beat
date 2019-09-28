@@ -26,4 +26,13 @@ class NodeTest < Minitest::Test
 
     assert_equal new_sound, obj.next_node
   end
+
+  def test_remove_next_node
+    obj = Node.new("plop")
+    new_sound = 'bing'
+    obj.next_node = new_sound
+    obj.clear!
+
+    assert obj.is_tail?
+  end
 end
