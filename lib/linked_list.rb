@@ -72,6 +72,10 @@ class LinkedList
     end
   end
 
+  def includes?(sound)
+    find_by_sound(self.head, sound)
+  end
+
   private
 
   def count_node(node, base)
@@ -103,6 +107,16 @@ class LinkedList
       start_node
     else
       node_at(start_node.next_node, position, counter += 1)
+    end
+  end
+
+  def find_by_sound(node, sound)
+    if node.sound == sound
+      true
+    elsif node.is_tail?
+      false
+    else
+      find_by_sound(node.next_node, sound)
     end
   end
 end

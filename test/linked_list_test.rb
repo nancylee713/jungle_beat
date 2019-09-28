@@ -116,4 +116,15 @@ class LinkedListTest < Minitest::Test
     result_2 = @obj.find(1, 3)
     assert_equal 'woo shi shu', result_2
   end
+
+  def test_includes
+    @obj.append('deep')
+    @obj.append('woo')
+    @obj.append('shi')
+    @obj.append('shu')
+    @obj.append('blop')
+
+    assert @obj.includes?("deep")
+    refute @obj.includes?("dep")
+  end
 end
