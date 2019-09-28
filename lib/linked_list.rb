@@ -8,7 +8,12 @@ class LinkedList
   end
 
   def append(data)
-    self.head = Node.new(data)
+    node = Node.new(data)
+    if is_empty?
+      self.head = node
+    else
+      last_node(self.head).next_node = node
+    end
   end
 
   def count

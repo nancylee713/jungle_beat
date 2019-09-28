@@ -57,12 +57,13 @@ class LinkedListTest < Minitest::Test
   end
 
   def test_append_can_add_multiple_nodes
-  skip
     obj = LinkedList.new
     obj.append('doop')
     obj.append('deep')
 
     result = obj.head.next_node.sound
+
+    assert_equal 'deep', result
   end
 
   def test_empty_when_head_is_nil_or_not
