@@ -7,4 +7,9 @@ class NodeTest < Minitest::Test
     obj = Node.new("plop")
     assert_instance_of Node, obj
   end
+
+  def test_next_node_returns_nil
+    obj = Node.new("plop")
+    assert_nil obj.next_node
+  end
 end
