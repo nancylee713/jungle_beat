@@ -20,7 +20,6 @@ class LinkedListTest < Minitest::Test
     longer_obj = @obj.append('doop')
 
     assert_instance_of Node, longer_obj
-<<<<<<< Updated upstream
     assert_equal longer_obj, @obj.head
     assert_nil @obj.head.next_node
     assert_equal 'doop', longer_obj.sound
@@ -139,11 +138,6 @@ class LinkedListTest < Minitest::Test
     assert_equal 'blop', @obj.pop
     assert_equal 'shu', @obj.pop
     assert_equal 'deep woo shi', @obj.to_string
-=======
-    assert_equal longer_obj, obj.head
-    assert_nil obj.head.next_node
-    assert_equal 'doop', longer_obj.sound
->>>>>>> Stashed changes
   end
 
 end
