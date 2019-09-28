@@ -88,5 +88,6 @@ class LinkedListTest < Minitest::Test
     expected = 'ding doop deep'
 
     assert_equal expected, @obj.to_string
+    assert_equal 3, @obj.count
   end
 end
