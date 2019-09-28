@@ -44,4 +44,12 @@ class LinkedListTest < Minitest::Test
 
     assert_equal 'doop', stringified
   end
+
+  def test_append_can_add_multiple_nodes
+    obj = LinkedList.new
+    obj.append('doop')
+    obj.append('deep')
+    binding.pry
+    result = obj.head.next_node.sound
+  end
 end
