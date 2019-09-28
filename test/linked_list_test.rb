@@ -13,4 +13,15 @@ class LinkedListTest < Minitest::Test
     obj = LinkedList.new
     assert_nil obj.head
   end
+
+  def test_append_adds_new_data_to_the_list
+    obj = LinkedList.new
+    longer_obj = obj.append('doop')
+
+    assert_instance_of Node, longer_obj
+    assert_equal longer_obj, obj.head
+    assert_nil obj.head.next_node
+    assert_equal 'doop', longer_obj.sound
+  end
+
 end
