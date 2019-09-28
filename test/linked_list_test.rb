@@ -73,4 +73,12 @@ class LinkedListTest < Minitest::Test
     obj.append('deep')
     refute obj.is_empty?
   end
+
+  def test_add_node
+    obj = LinkedList.new
+    longer_obj = obj.add_node('deep')
+
+    assert_instance_of Node, longer_obj
+    assert_equal 'deep', longer_obj.sound
+  end
 end

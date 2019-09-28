@@ -7,12 +7,15 @@ class LinkedList
     @head = nil
   end
 
+  def add_node(data)
+    Node.new(data)
+  end
+
   def append(data)
-    node = Node.new(data)
     if is_empty?
-      self.head = node
+      self.head = add_node(data)
     else
-      last_node(self.head).next_node = node
+      last_node(self.head).next_node = add_node(data)
     end
   end
 
